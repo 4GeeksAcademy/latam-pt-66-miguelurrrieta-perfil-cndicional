@@ -29,14 +29,37 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  let name = variables.name || "Your Name";
+  let lastname = variables.lastname || "Your Lastname";
+  let role = variables.role || "Web Developer";
+  let city = variables.city || "Miami";
+  let country = variables.country || "USA";
+
+  // 2. Validamos la posición de las redes sociales
+  let socialPosition = variables.socialMediaPosition || "position-right";
+
+  // 3. Validamos los enlaces de redes sociales (si el usuario escribió su user, lo sumamos al link)
+  let twitter = variables.twitter
+    ? `https://twitter.com/${variables.twitter}`
+    : "https://twitter.com/4geeksacademy";
+  let github = variables.github
+    ? `https://github.com/${variables.github}`
+    : "https://github.com/4geeksacademy";
+  let linkedin = variables.linkedin
+    ? `https://linkedin.com/in/${variables.linkedin}`
+    : "https://linkedin.com/school/4geeksacademy";
+  let instagram = variables.instagram
+    ? `https://instagram.com/${variables.instagram}`
+    : "https://instagram.com/4geeksacademy";
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
-          <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400" class="photo" />
+          <h1>Miguel Urrieta</h1>
           <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
+          <h3>Santiago, Chile</h3>
+          <ul class="${socialPosition}">
             <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
             <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
@@ -56,7 +79,8 @@ window.onload = function() {
     // this is the image's url that will be used as a background for the profile cover
     background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
     // this is the url for the profile avatar
-    avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
+    avatarURL:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400",
     // social media bar position (position-left or position-right)
     socialMediaPosition: "position-right",
     // social media usernames
